@@ -18,23 +18,12 @@ Website "Kisah Sukses" adalah platform digital untuk Palang Merah Indonesia (PMI
 
 Aplikasi ini dibangun dengan teknologi modern: **Next.js 14**, **Supabase**, **TypeScript**, dan **Tailwind CSS**.
 
-## 💻 Frontend
-
-<img width="1040" alt="Cover" src="https://github.com/timtbdev/Next.js-Blog-App/assets/25026241/d263479c-853f-40ed-aed4-58c5cbb8b14c">
-
-## 🧰 Backend
-
-<img width="1040" alt="Cover" src="https://github.com/timtbdev/Next.js-Blog-App/assets/25026241/c5cd3077-b955-43fd-b6ea-2f3b5f9297c9">
 
 ## 💾 Database Schema
 
 ### Database schema & dummy data: [here](./database_schema/)
 
 <img width="992" alt="Screenshot 2023-06-10 at 10 00 18 PM" src="https://github.com/timtbdev/Next.js-Blog-App/assets/25026241/729e2d22-2467-4d5b-9c6c-e6a5ea58c717">
-
-## 📊 Google Lighthouse performance statistics
-
-<img width="992" alt="Screenshot 2023-06-10 at 10 00 18 PM" src="https://github.com/timtbdev/Next.js-Blog-App/assets/25026241/2a4f693b-5c0d-4647-8444-291e1f635ee7">
 
 ## 📚 Tech Stacks
 
@@ -271,15 +260,6 @@ Jika mengalami kendala:
 - 📧 Email: [admin@pmilampung.org](mailto:admin@pmilampung.org)
 - 📱 WhatsApp: +62-xxx-xxxx-xxxx
 - 🌐 Website: [www.pmilampung.org](https://www.pmilampung.org)
-
-## Contributing
-
-- [Start a discussion](https://timtb.dev/contact) with a question, piece of feedback, or idea you want to share with me.
-- [Open an issue](https://github.com/timtbdev/Next.js-Blog-App/issues) if you believe you've encountered a bug with the starter kit.
-
-## 🙇 Author
-
-- Tim ([@timtbdev](https://twitter.com/timtbdev))
 
 ## License
 

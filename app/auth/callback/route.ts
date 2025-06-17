@@ -10,7 +10,14 @@ export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
   const code = requestUrl.searchParams.get("code");
   const redirectPath = requestUrl.searchParams.get("redirect");
-  const redirect = getUrl() + redirectPath;
+  const baseUrl = getUrl();
+  const redirect = baseUrl + redirectPath;
+
+  console.log('🔍 Auth Callback - requestUrl:', requestUrl.toString());
+  console.log('🔍 Auth Callback - code:', code);
+  console.log('🔍 Auth Callback - redirectPath:', redirectPath);
+  console.log('🔍 Auth Callback - baseUrl:', baseUrl);
+  console.log('🔍 Auth Callback - final redirect:', redirect);
 
   if (code) {
     const cookieStore = cookies();

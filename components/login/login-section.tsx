@@ -12,12 +12,16 @@ import { useForm } from "react-hook-form";
 import z from "zod";
 
 const getLoginRedirectPath = (pathname?: string | null): string => {
-  return (
-    getUrl() +
+  const baseUrl = getUrl();
+  const redirectPath = baseUrl +
     "/auth/callback" + // Required for PKCE authentication.
     "?redirect=" + // Passed to auth/route/callback to redirect after auth
-    (pathname ? pathname : "/dashboard")
-  );
+    (pathname ? pathname : "/dashboard");
+  
+  console.log('🔍 getLoginRedirectPath - baseUrl:', baseUrl);
+  console.log('🔍 getLoginRedirectPath - final redirectTo:', redirectPath);
+  
+  return redirectPath;
 };
 
 const FormSchema = z.object({

@@ -8,7 +8,7 @@ interface LogoIconProps {
 const LogoIcon: FC<LogoIconProps> = ({ className = "" }) => {
   return (
     <Image
-      src="/images/LogoPMI.png"
+      src="/images/Pmi.png"
       alt="PMI Lampung Logo"
       width={48}
       height={48}

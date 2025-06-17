@@ -18,7 +18,7 @@ const ProtectedDesktopSideBar = () => {
           <Link href={getUrl()} className="flex h-16 shrink-0 items-center">
             <Image
               className="h-[40px] w-[40px] w-auto"
-              src="/images/LogoPMI.png"
+              src="/images/Pmi.png"
               alt="PMI Lampung Logo"
               height={40}
               width={40}

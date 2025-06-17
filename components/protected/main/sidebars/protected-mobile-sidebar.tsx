@@ -84,7 +84,7 @@ const ProtectedMobileSideBar: FC<ProtectedMobileSideBarProps> = ({
                   >
                     <Image
                       className="h-[40px] w-[40px]"
-                      src="/images/LogoPMI.png"
+                      src="/images/Pmi.png"
                       alt="PMI Lampung Logo"
                       height={40}
                       width={40}

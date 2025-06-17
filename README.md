@@ -128,32 +128,27 @@ yarn install
 
 ### 4. 🔑 Setup Authentication (OAuth)
 
-#### A. Google OAuth
+> **📖 Dokumentasi Lengkap OAuth**: Lihat file [OAUTH_SETUP.md](./OAUTH_SETUP.md) untuk panduan detail setup Google OAuth dan GitHub OAuth.
+
+#### Quick Setup:
+
+**A. Google OAuth**
 1. Buka [Google Cloud Console](https://console.cloud.google.com/)
-2. Buat project baru atau pilih existing project
-3. Enable **Google+ API**
-4. Buat **OAuth 2.0 Client ID**:
-   - Application type: **Web application**
-   - Authorized redirect URIs: `https://[your-project-ref].supabase.co/auth/v1/callback`
-5. Copy **Client ID** dan **Client Secret**
+2. Buat project baru dan enable Google+ API
+3. Buat OAuth 2.0 Client ID (Web application)
+4. Set redirect URI: `https://[your-project-ref].supabase.co/auth/v1/callback`
+5. Copy Client ID dan Client Secret
 
-#### B. GitHub OAuth
+**B. GitHub OAuth**
 1. Buka [GitHub Developer Settings](https://github.com/settings/developers)
-2. Klik **"New OAuth App"**
-3. Isi form:
-   - **Application name**: `PMI Lampung Kisah Sukses`
-   - **Homepage URL**: `http://localhost:3000`
-   - **Authorization callback URL**: `https://[your-project-ref].supabase.co/auth/v1/callback`
-4. Copy **Client ID** dan **Client Secret**
+2. Buat New OAuth App
+3. Set callback URL: `https://[your-project-ref].supabase.co/auth/v1/callback`
+4. Copy Client ID dan Client Secret
 
-#### C. Setup di Supabase
-1. Masuk ke **Authentication → Settings → Auth Providers** di Supabase Dashboard
-2. **Enable Google**:
-   - Masukkan Client ID dan Client Secret dari Google
-   - Redirect URL: `http://localhost:3000/auth/callback`
-3. **Enable GitHub**:
-   - Masukkan Client ID dan Client Secret dari GitHub
-   - Redirect URL: `http://localhost:3000/auth/callback`
+**C. Setup di Supabase**
+1. Masuk ke **Authentication → Providers** di Supabase Dashboard
+2. Enable Google dan GitHub dengan credentials yang sudah didapat
+3. Set redirect URL: `http://localhost:3000/auth/callback`
 
 ### 5. 🔧 Konfigurasi Environment Variables
 

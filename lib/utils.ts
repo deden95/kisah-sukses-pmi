@@ -40,10 +40,7 @@ export const toDateString = (date: Date) => {
 };
 
 export function getUrl() {
-  const url = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-  console.log('🔍 getUrl() called - URL:', url); // Debug log - remove after fixing
-  console.log('🔍 NODE_ENV:', process.env.NODE_ENV); // Debug log
-  return url;
+  return process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 }
 
 // BlurData for loading images with blur effect

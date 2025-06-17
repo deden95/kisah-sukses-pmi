@@ -119,7 +119,7 @@ export default function RootLayout({
       <body className={fontSans.variable}>
         <div className="bg-white font-sans">
           {children}
-          <VercelAnalytics />
+          {/* <VercelAnalytics /> - Temporarily disabled due to TrustedScript CSP error */}
           <Toaster position="top-center" />
           <TailwindIndicator />
         </div>

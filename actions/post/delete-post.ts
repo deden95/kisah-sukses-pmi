@@ -11,7 +11,7 @@ export async function DeletePost(context: z.infer<typeof postDeleteSchema>) {
   const supabase = createClient(cookieStore);
   try {
     const post = postDeleteSchema.parse(context);
-    let deletedPost = null;
+    let deletedPost: any = null;
     let tableSource = '';
 
     // Coba hapus dari tabel posts terlebih dahulu

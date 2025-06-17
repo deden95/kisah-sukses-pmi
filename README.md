@@ -281,6 +281,85 @@ Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
 
 **📋 Comprehensive Guide**: [docs/TROUBLESHOOTING.md](./docs/TROUBLESHOOTING.md) - Semua solusi masalah ada di sini!
 
+## 🔧 OAuth Production Deployment Fix
+
+### ❌ Masalah: Login Google Redirect ke localhost:3000 Setelah Deploy
+
+Jika setelah deploy ke Vercel/Netlify, login Google masih redirect ke `http://localhost:3000/?code=xxx`, ikuti langkah berikut:
+
+### ✅ **Solusi Lengkap:**
+
+#### 1. **Update Environment Variables di Platform Deploy**
+
+**Di Vercel:**
+1. Buka dashboard Vercel → Project Anda → **Settings** → **Environment Variables**
+2. Tambahkan/Update variabel berikut:
+```env
+NEXT_PUBLIC_WEB_URL=https://your-app-name.vercel.app
+NEXT_PUBLIC_APP_URL=https://your-app-name.vercel.app
+```
+3. **Redeploy** project Anda
+
+**Di Netlify:**
+1. Buka dashboard Netlify → Site Anda → **Site Settings** → **Environment Variables**
+2. Tambahkan variabel yang sama seperti di atas
+3. **Trigger Deploy** ulang
+
+#### 2. **Update Supabase Configuration**
+
+1. Buka [Supabase Dashboard](https://app.supabase.com) → Project Anda
+2. Ke **Authentication** → **URL Configuration**
+3. Update:
+   - **Site URL**: `https://your-app-name.vercel.app`
+   - **Redirect URLs**: Tambahkan `https://your-app-name.vercel.app/auth/callback`
+
+#### 3. **Update Google OAuth Configuration**
+
+1. Buka [Google Cloud Console](https://console.cloud.google.com/)
+2. Ke **APIs & Services** → **Credentials**
+3. Edit OAuth 2.0 Client ID Anda
+4. Di **Authorized redirect URIs**, tambahkan:
+```
+https://your-app-name.vercel.app/auth/callback
+```
+5. **Save** perubahan
+
+#### 4. **Update GitHub OAuth Configuration** (jika menggunakan)
+
+1. Buka [GitHub Developer Settings](https://github.com/settings/developers)
+2. Edit OAuth App Anda
+3. Update **Authorization callback URL**:
+```
+https://your-app-name.vercel.app/auth/callback
+```
+4. **Update application**
+
+### 🔍 **Penjelasan Teknis**
+
+Masalah ini terjadi karena:
+- Fungsi `getUrl()` di `lib/utils.ts` menggunakan environment variable `NEXT_PUBLIC_WEB_URL` untuk production
+- Jika tidak di-set, akan fallback ke hardcoded URL atau localhost
+- OAuth providers masih menggunakan redirect URL development
+
+### ✅ **Cara Verifikasi Fix Berhasil**
+
+1. Buka aplikasi production Anda
+2. Klik "Login with Google"
+3. Setelah authorize di Google, seharusnya redirect ke:
+```
+https://your-app-name.vercel.app/auth/callback?code=xxx
+```
+4. Kemudian otomatis redirect ke dashboard/homepage production
+
+### 🚨 **Tips Penting**
+
+- ⚠️ **Jangan lupa redeploy** setelah update environment variables
+- 🔄 **Clear browser cache** jika masih ada masalah
+- 📝 **Catat semua URL** yang digunakan untuk konsistensi
+- 🔐 **Gunakan HTTPS** untuk semua production URLs
+
+---
+
 ## 📱 Deployment
 
 ### Deploy ke Vercel

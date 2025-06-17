@@ -58,7 +58,7 @@ const PostEditButton: FC<PostEditButtonProps> = ({ id }) => {
     return () => subscription.unsubscribe();
   }, [id, session?.user.id, supabase.auth]);
 
-  // Delete post
+  // Delete post from both posts and drafts tables
   async function deleteMyPost() {
     setIsDeleteLoading(true);
     if (id && session?.user.id) {
@@ -66,18 +66,32 @@ const PostEditButton: FC<PostEditButtonProps> = ({ id }) => {
         id: id,
         user_id: session?.user.id,
       };
-      const response = await DeletePost(myPostData);
-      if (response) {
+      
+      try {
+        const response = await DeletePost(myPostData);
+        
+        if (response && response.success) {
+          setIsDeleteLoading(false);
+          setShowDeleteAlert(false);
+          toast.success(response.message || "Post berhasil dihapus!");
+          router.refresh();
+          // Redirect ke halaman posts jika sedang di detail post
+          if (window.location.pathname.includes('/posts/')) {
+            router.push('/editor/posts');
+          }
+        } else {
+          setIsDeleteLoading(false);
+          const errorMessage = response?.message || "Gagal menghapus post. Post mungkin tidak ditemukan atau Anda tidak memiliki izin.";
+          toast.error(errorMessage);
+        }
+      } catch (error) {
         setIsDeleteLoading(false);
-        toast.success(protectedPostConfig.successDelete);
-        router.refresh();
-      } else {
-        setIsDeleteLoading(false);
-        toast.error(protectedPostConfig.errorDelete);
+        console.error('Error deleting post:', error);
+        toast.error("Terjadi kesalahan saat menghapus post.");
       }
     } else {
       setIsDeleteLoading(false);
-      toast.error(protectedPostConfig.errorDelete);
+      toast.error("ID post atau user tidak valid.");
     }
   }
 

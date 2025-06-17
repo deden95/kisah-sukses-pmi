@@ -17,9 +17,9 @@ const ProtectedDesktopSideBar = () => {
         <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4">
           <Link href={getUrl()} className="flex h-16 shrink-0 items-center">
             <Image
-              className="h-[40px]w-[40px]w-auto"
-              src="/images/logo.png"
-              alt="Logo"
+              className="h-[40px] w-[40px] w-auto"
+              src="/images/LogoPMI.png"
+              alt="PMI Lampung Logo"
               height={40}
               width={40}
               priority

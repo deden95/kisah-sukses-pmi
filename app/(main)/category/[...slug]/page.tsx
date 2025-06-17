@@ -36,7 +36,7 @@ export async function generateMetadata({
     description: seoData.absoluteTitle,
     authors: {
       name: seoData.author.name,
-      url: seoData.author.twitterUrl,
+      url: seoData.author.githubUrl,
     },
     openGraph: {
       title: category?.title,

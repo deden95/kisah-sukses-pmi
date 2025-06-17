@@ -1,5 +1,5 @@
 import { LoginMenu } from "@/components/login";
-import { IconWrapperRounded, LogoIcon } from "@/icons";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { MainDesktopNavigationMenu } from "./menu";
@@ -7,18 +7,27 @@ import { MainDesktopNavigationMenu } from "./menu";
 const MainDesktopNavigation = () => {
   return (
     <>
-      <nav className="mx-auto hidden max-w-5xl items-center justify-between px-2 py-4 md:flex">
-        {/* Logo */}
-        <div className="flex flex-1 justify-start pl-2">
-          <Link href="/">
-            <IconWrapperRounded>
-              <LogoIcon className="h-10 w-10" />
-            </IconWrapperRounded>
+      <nav className="mx-auto hidden max-w-7xl items-center justify-between px-6 py-4 md:flex bg-white border-b border-gray-100">
+        {/* PMI Header Logo Section */}
+        <div className="flex flex-1 justify-start">
+          <Link href="/" className="flex items-center space-x-6">   
+            {/* Logo PMI Lampung */}
+            <div className="flex items-center space-x-3">
+              <Image
+                src="/images/LogoPMI.png"
+                alt="PMI Lampung Logo"
+                width={200}
+                height={60}
+                className="rounded-full"
+                priority
+              />
+       
+            </div>
           </Link>
         </div>
 
         {/* Navigation */}
-        <div>
+        <div className="flex items-center">
           <div className="flex flex-1 gap-x-6">
             <MainDesktopNavigationMenu />
           </div>

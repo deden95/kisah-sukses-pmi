@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: seoData.author.name,
-      url: seoData.author.twitterUrl,
+      url: seoData.author.githubUrl,
     },
   ],
   creator: seoData.author.name,
@@ -64,6 +64,7 @@ export const metadata: Metadata = {
 
   icons: {
     icon: [
+      { url: "/favicons/favicon.png", sizes: "32x32", type: "image/png" },
       { url: "/favicons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       { url: "/favicons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
       {
@@ -72,10 +73,10 @@ export const metadata: Metadata = {
         type: "image/png",
       },
     ],
-    shortcut: ["/favicons/favicon-32x32.png"],
+    shortcut: ["/favicons/favicon.png"],
     apple: [
       { url: "/favicons/apple-icon.png" },
-      { url: "/apple-icon-180x180.png", sizes: "180x180", type: "image/png" },
+      { url: "/favicons/apple-icon-180x180.png", sizes: "180x180", type: "image/png" },
     ],
     other: [
       {
@@ -110,7 +111,7 @@ export const metadata: Metadata = {
     description: seoData.description,
     // images: [getOgImageUrl(metaData.title, metaData.subTitle, metaData.tags, '/')],
     images: `${getUrl()}/images/twitter-image.png`,
-    creator: seoData.author.twitterAddress,
+    creator: seoData.author.githubUrl,
   },
   appleWebApp: {
     capable: true,

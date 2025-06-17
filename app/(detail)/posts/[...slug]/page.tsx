@@ -74,7 +74,7 @@ export async function generateMetadata({
     description: post.description,
     authors: {
       name: seoData.author.name,
-      url: seoData.author.twitterUrl,
+      url: seoData.author.githubUrl,
     },
     openGraph: {
       title: post.title as string,

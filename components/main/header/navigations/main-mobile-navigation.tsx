@@ -2,6 +2,8 @@
 
 import { LoginMenu } from "@/components/login";
 import { Disclosure } from "@headlessui/react";
+import Image from "next/image";
+import Link from "next/link";
 import React, { Fragment } from "react";
 import { MainMobileMenuButton, MainMobileNavigationMenu } from "./menu";
 
@@ -10,14 +12,25 @@ const MainMobileNavigation = () => {
     <Disclosure>
       {({ open }) => (
         <>
-          <nav className="mx-auto flex max-w-5xl items-center justify-between bg-gray-50 px-6 py-4 md:hidden">
-            {/* Login */}
-            <div className="flex flex-1 justify-start pl-2">
-              <LoginMenu />
+          <nav className="mx-auto flex max-w-7xl items-center justify-between bg-white px-4 py-3 md:hidden">
+            {/* PMI Logo for Mobile */}
+            <div className="flex flex-1 justify-start">
+              <Link href="/" className="flex items-center space-x-2">
+                <Image
+                  src="/images/LogoPMI.png"
+                  alt="PMI Lampung Logo"
+                  width={200}
+                  height={60}
+                  className="rounded-full"
+                  priority
+                />        
+              </Link>
             </div>
 
-            {/* Mobile Menu Button */}
-            <div className="flex flex-1 justify-end pr-2">
+            {/* Login */}
+            <div className="flex items-center space-x-2">
+              <LoginMenu />
+              {/* Mobile Menu Button */}
               <MainMobileMenuButton open={open} />
             </div>
           </nav>

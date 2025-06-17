@@ -6,7 +6,7 @@ export type SeoType = {
   subTitle: string;
   absoluteTitle: string;
   ogTitle: string;
-  author: { name: string; twitterUrl: string; twitterAddress: string };
+  author: { name: string; githubUrl: string };
   description: string;
   keywords: Array<string>;
   tags: Array<string>;

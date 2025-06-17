@@ -1,7 +1,7 @@
 # 🩸 PMI Lampung - Kisah Sukses
 
 <p align="center">
-  <img width="200" alt="PMI Logo" src="/public/images/logo.png">
+  <img width="200" alt="PMI Logo" src="/public/images/LogoPMI.png">
 </p>
 
 <p align="center">
@@ -21,10 +21,6 @@ Aplikasi ini dibangun dengan teknologi modern: **Next.js 14**, **Supabase**, **T
 ## 💻 Frontend
 
 <img width="1040" alt="Cover" src="https://github.com/timtbdev/Next.js-Blog-App/assets/25026241/d263479c-853f-40ed-aed4-58c5cbb8b14c">
-
-## 📹 Preview
-
-https://github.com/timtbdev/Next.js-Blog-App/assets/25026241/c0488b1b-ff48-4871-849d-806f09c39322
 
 ## 🧰 Backend
 

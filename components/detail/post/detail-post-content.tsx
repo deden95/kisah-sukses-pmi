@@ -100,6 +100,7 @@ const renderExtensions = [
 
 export default function DetailPostContent({ content }: DetailPostContentProps) {
   let parsedContent: JSONContent | null = null;
+  let isValidJSON = true;
 
   // Parse JSON content safely
   if (content) {
@@ -107,13 +108,7 @@ export default function DetailPostContent({ content }: DetailPostContentProps) {
       parsedContent = JSON.parse(content);
     } catch (error) {
       console.error("Error parsing content JSON:", error);
-      // Fallback untuk konten yang sudah berupa HTML
-      return (
-        <div 
-          className="prose prose-lg prose-stone max-w-none"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
-      );
+      isValidJSON = false;
     }
   }
 
@@ -127,6 +122,16 @@ export default function DetailPostContent({ content }: DetailPostContentProps) {
       },
     },
   });
+
+  // Early return for invalid JSON as fallback
+  if (!isValidJSON && content) {
+    return (
+      <div 
+        className="prose prose-lg prose-stone max-w-none"
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
+    );
+  }
 
   if (!editor || !content) {
     return (

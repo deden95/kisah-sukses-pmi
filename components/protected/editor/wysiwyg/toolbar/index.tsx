@@ -246,6 +246,7 @@ export const EditorToolbar = ({ editor }: EditorToolbarProps) => {
                   className="w-6 h-6 rounded border border-gray-300 hover:scale-110 transition-transform"
                   style={{ backgroundColor: color }}
                   onClick={() => editor.chain().focus().setColor(color).run()}
+                  aria-label={`Set text color to ${color}`}
                 />
               ))}
             </div>
@@ -278,6 +279,7 @@ export const EditorToolbar = ({ editor }: EditorToolbarProps) => {
                   className="w-6 h-6 rounded border border-gray-300 hover:scale-110 transition-transform"
                   style={{ backgroundColor: color }}
                   onClick={() => editor.chain().focus().toggleHighlight({ color }).run()}
+                  aria-label={`Set highlight color to ${color}`}
                 />
               ))}
             </div>

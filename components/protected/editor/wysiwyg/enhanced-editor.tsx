@@ -153,7 +153,7 @@ export default function EnhancedWysiwygEditor({
               <div className="absolute top-6 left-6 text-gray-400 pointer-events-none">
                 <p className="text-lg">Start writing your article...</p>
                 <p className="text-sm mt-1">
-                  Type '/' for commands, or use the toolbar above for formatting options.
+                  Type &apos;/&apos; for commands, or use the toolbar above for formatting options.
                 </p>
               </div>
             )}
@@ -163,7 +163,7 @@ export default function EnhancedWysiwygEditor({
           <div className="border-t border-gray-200 bg-gray-50 px-6 py-3 text-sm text-gray-600">
             <div className="flex flex-wrap gap-4 text-xs">
               <span>💡 <strong>Tips:</strong></span>
-              <span>• Type '/' for quick commands</span>
+              <span>• Type &apos;/&apos; for quick commands</span>
               <span>• Select text to see formatting options</span>
               <span>• Use Ctrl+Z/Y for undo/redo</span>
               <span>• Drag and drop to rearrange content</span>

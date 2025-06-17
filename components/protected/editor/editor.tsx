@@ -66,6 +66,7 @@ type FormData = z.infer<typeof postEditFormSchema>;
 interface EditorProps {
   post: Draft;
   userId: string;
+  categories: any[];
   coverImageFileName: string;
   coverImagePublicUrl: string;
   galleryImageFileNames: string[];
@@ -77,6 +78,7 @@ type EditorFormValues = z.infer<typeof postEditFormSchema>;
 const Editor: FC<EditorProps> = ({
   post,
   userId,
+  categories,
   coverImageFileName,
   coverImagePublicUrl,
   galleryImageFileNames,

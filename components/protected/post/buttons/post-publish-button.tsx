@@ -23,7 +23,7 @@ interface PostPublishButtonProps {
   postTitle: string;
 }
 
-export const PostPublishButton = ({ postId, postTitle }: PostPublishButtonProps) => {
+const PostPublishButton = ({ postId, postTitle }: PostPublishButtonProps) => {
   const router = useRouter();
   const [isPublishing, setIsPublishing] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
@@ -75,7 +75,7 @@ export const PostPublishButton = ({ postId, postTitle }: PostPublishButtonProps)
         <AlertDialogHeader>
           <AlertDialogTitle>Publish Post</AlertDialogTitle>
           <AlertDialogDescription>
-            Apakah Anda yakin ingin mempublish post "{postTitle}"? 
+            Apakah Anda yakin ingin mempublish post &quot;{postTitle}&quot;?
             <br /><br />
             Setelah dipublish:
             <br />• Post akan visible untuk publik
@@ -106,4 +106,6 @@ export const PostPublishButton = ({ postId, postTitle }: PostPublishButtonProps)
     </AlertDialog>
   );
 };
+
+export default PostPublishButton;
 

@@ -129,6 +129,8 @@ yarn install
 ### 4. 🔑 Setup Authentication (OAuth)
 
 > **📖 Dokumentasi Lengkap OAuth**: Lihat file [OAUTH_SETUP.md](./OAUTH_SETUP.md) untuk panduan detail setup Google OAuth dan GitHub OAuth.
+> 
+> **🚨 Troubleshooting OAuth**: Jika mengalami error, lihat [OAUTH_TROUBLESHOOTING.md](./OAUTH_TROUBLESHOOTING.md) untuk solusi cepat.
 
 #### Quick Setup:
 
@@ -222,6 +224,13 @@ Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
 1. Periksa konfigurasi OAuth di Google/GitHub Console
 2. Pastikan redirect URL sudah benar
 3. Periksa apakah OAuth sudah di-enable di Supabase
+4. 🚨 **Lihat**: [OAUTH_TROUBLESHOOTING.md](./OAUTH_TROUBLESHOOTING.md) untuk solusi lengkap
+
+### Upload gambar error (403 - RLS policy violation)
+**Solusi**: 
+1. Jalankan script `fix_storage_rls.sql` di Supabase SQL Editor
+2. Pastikan storage buckets sudah dibuat dan bersifat public
+3. 🚨 **Lihat**: [STORAGE_UPLOAD_FIX.md](./STORAGE_UPLOAD_FIX.md) untuk panduan lengkap
 
 ### Database connection error
 **Solusi**: Pastikan URL dan API Key Supabase sudah benar di file `.env`

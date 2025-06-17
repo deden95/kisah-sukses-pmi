@@ -40,7 +40,11 @@ export const toDateString = (date: Date) => {
 };
 
 export function getUrl() {
-  return process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+  if (process.env.NODE_ENV === "development") {
+    return process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+  } else {
+    return process.env.NEXT_PUBLIC_WEB_URL || "https://kisah-sukses-pmi.vercel.app";
+  }
 }
 
 // BlurData for loading images with blur effect

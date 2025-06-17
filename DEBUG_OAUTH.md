@@ -15,9 +15,10 @@ The issue is NOT in the Next.js application code. The redirect is happening at G
 - [ ] Go to [Google Cloud Console](https://console.cloud.google.com/)
 - [ ] Navigate to **APIs & Services** → **Credentials**
 - [ ] Select your OAuth 2.0 Client ID
-- [ ] **Authorized redirect URIs** should ONLY contain:
+- [ ] **Authorized redirect URIs** should contain BOTH:
   ```
   https://imdfhpojkvvyffenxbgf.supabase.co/auth/v1/callback
+  https://kisah-sukses-pmi.vercel.app/auth/callback
   ```
 - [ ] **REMOVE** any URLs containing `localhost` or `127.0.0.1`
 - [ ] Click **Save**

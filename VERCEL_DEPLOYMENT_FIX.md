@@ -3,18 +3,18 @@
 ## Masalah
 Setelah deploy ke Vercel, Google OAuth masih redirect ke `http://localhost:3000` alih-alih URL production.
 
-## Solusi
+## Solusi Sederhana
 
 ### 1. Update Environment Variables di Vercel
 
 1. Masuk ke dashboard Vercel
 2. Pilih project Anda
 3. Masuk ke **Settings** → **Environment Variables**
-4. Tambahkan variable baru:
+4. Update/tambahkan variable:
    ```
-   NEXT_PUBLIC_WEB_URL = https://your-app-name.vercel.app
+   NEXT_PUBLIC_APP_URL = https://kisah-sukses-pmi.vercel.app
    ```
-   (Ganti dengan URL Vercel yang sebenarnya)
+   (Sesuaikan dengan URL Vercel Anda yang sebenarnya)
 
 ### 2. Update Google Cloud Console
 
@@ -24,7 +24,7 @@ Setelah deploy ke Vercel, Google OAuth masih redirect ke `http://localhost:3000`
 4. Klik pada OAuth 2.0 Client ID yang Anda gunakan
 5. Di bagian **Authorized redirect URIs**, tambahkan:
    ```
-   https://your-app-name.vercel.app/auth/callback
+   https://kisah-sukses-pmi.vercel.app/auth/callback
    https://imdfhpojkvvyffenxbgf.supabase.co/auth/v1/callback
    ```
 
@@ -33,8 +33,8 @@ Setelah deploy ke Vercel, Google OAuth masih redirect ke `http://localhost:3000`
 1. Masuk ke [Supabase Dashboard](https://supabase.com/dashboard)
 2. Pilih project Anda
 3. Masuk ke **Settings** → **General**
-4. Update **Site URL** menjadi: `https://your-app-name.vercel.app`
-5. Di **Redirect URLs**, tambahkan: `https://your-app-name.vercel.app/**`
+4. Update **Site URL** menjadi: `https://kisah-sukses-pmi.vercel.app`
+5. Di **Redirect URLs**, tambahkan: `https://kisah-sukses-pmi.vercel.app/**`
 
 ### 4. Deploy Ulang
 

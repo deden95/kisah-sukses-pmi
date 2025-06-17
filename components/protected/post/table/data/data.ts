@@ -19,7 +19,11 @@ export const statuses = [
 
 // Categories will be loaded dynamically from database
 // This is just a fallback
-export const categories = [];
+export const categories: Array<{
+  value: string;
+  label: string;
+  icon: any;
+}> = [];
 
 // Helper function to create category item
 export const createCategoryItem = (id: string, title: string) => ({

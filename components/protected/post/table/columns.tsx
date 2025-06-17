@@ -41,15 +41,13 @@ export const columns: ColumnDef<Draft>[] = [
     },
   },
   {
-    accessorKey: "published",
+    accessorKey: "status",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Status" />
     ),
     cell: ({ row }) => {
-      // Since we're showing drafts, status is always "draft"
-      // But we can check if published field exists for future use
-      const isPublished = row.original.published === true;
-      const status = isPublished ? "published" : "draft";
+      // Get status from the draft object
+      const status = row.getValue("status") as string || "draft";
       
       return (
         <div className="flex w-[100px] items-center">
@@ -59,8 +57,7 @@ export const columns: ColumnDef<Draft>[] = [
       );
     },
     filterFn: (row, id, value) => {
-      const isPublished = row.original.published === true;
-      const status = isPublished ? "published" : "draft";
+      const status = row.getValue("status") as string || "draft";
       return value.includes(status);
     },
   },

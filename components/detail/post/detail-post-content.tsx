@@ -112,6 +112,7 @@ export default function DetailPostContent({ content }: DetailPostContentProps) {
     }
   }
 
+  // Always call useEditor hook (React Hooks must be called in the same order)
   const editor = useEditor({
     extensions: renderExtensions,
     content: parsedContent,

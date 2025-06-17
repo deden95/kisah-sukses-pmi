@@ -30,12 +30,17 @@ const ProtectedBookMarkTableColumns: ColumnDef<Post>[] = [
       <DataTableColumnHeader column={column} title="Category" />
     ),
     cell: ({ row }) => {
+      const categoryId = row.getValue("category_id") as string;
       const label = categories.find(
-        (category) => category.value === row.getValue("category_id"),
+        (category) => category.value === categoryId,
       );
 
       if (!label) {
-        return null;
+        return (
+          <div className="flex space-x-2">
+            <span className="text-gray-500">Category not found</span>
+          </div>
+        );
       }
 
       return (

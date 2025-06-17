@@ -8,14 +8,26 @@ Error ini terjadi karena **Row Level Security (RLS) policies** untuk Supabase St
 
 ## ⚡ Solusi Cepat - 5 Menit
 
-### 1. **Jalankan Script SQL Fix**
+> **⚠️ PENTING**: Karena database dibuat dari `setup_database.sql`, storage buckets harus dibuat manual di dashboard terlebih dahulu!
+
+### 1. **Buat Storage Buckets Manual (WAJIB DULU)**
 
 1. **Buka Supabase Dashboard**: [https://supabase.com/dashboard](https://supabase.com/dashboard)
 2. **Pilih project**: `ppsnfjaqfkyrhuoyfupg`
-3. **Klik sidebar**: `SQL Editor`
-4. **Klik "New query"**
-5. **Copy script** dari file `fix_storage_rls.sql` dan paste ke editor
-6. **Klik "Run"** untuk menjalankan script
+3. **Klik sidebar**: `Storage`
+4. **Klik "Create a new bucket"**
+5. **Buat 4 buckets berikut**:
+   - **Name**: `posts` → **Public bucket**: ✅ CENTANG → **Create**
+   - **Name**: `cover-image` → **Public bucket**: ✅ CENTANG → **Create**
+   - **Name**: `gallery-image` → **Public bucket**: ✅ CENTANG → **Create**
+   - **Name**: `profile` → **Public bucket**: ✅ CENTANG → **Create**
+
+### 2. **Jalankan Script SQL Fix**
+
+1. **Masih di Supabase Dashboard**, klik sidebar: `SQL Editor`
+2. **Klik "New query"**
+3. **Copy script** dari file `fix_storage_rls.sql` dan paste ke editor
+4. **Klik "Run"** untuk menjalankan script
 
 ### 2. **Manual Fix di Dashboard**
 

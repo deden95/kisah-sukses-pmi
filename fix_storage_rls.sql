@@ -1,32 +1,21 @@
 -- =====================================================
 -- FIX STORAGE RLS POLICIES - PMI LAMPUNG KISAH SUKSES
 -- =====================================================
--- Jalankan script ini untuk mengatasi error upload gambar
+-- Jalankan script ini SETELAH membuat storage buckets manual
 -- Error: "new row violates row-level security policy"
 
+-- ⚠️ PENTING: Script ini hanya berfungsi SETELAH Anda membuat 
+-- storage buckets secara manual di Supabase Dashboard!
+
 -- =====================================================
--- 1. CREATE STORAGE BUCKETS (Jika belum ada)
+-- 1. VERIFY STORAGE BUCKETS EXIST
 -- =====================================================
+-- Cek apakah buckets sudah dibuat (akan error jika belum ada)
+SELECT id, name, public FROM storage.buckets 
+WHERE id IN ('posts', 'cover-image', 'gallery-image', 'profile');
 
--- Bucket untuk gambar postingan
-INSERT INTO storage.buckets (id, name, public)
-VALUES ('posts', 'posts', true)
-ON CONFLICT (id) DO NOTHING;
-
--- Bucket untuk cover image
-INSERT INTO storage.buckets (id, name, public)
-VALUES ('cover-image', 'cover-image', true)
-ON CONFLICT (id) DO NOTHING;
-
--- Bucket untuk gallery images
-INSERT INTO storage.buckets (id, name, public)
-VALUES ('gallery-image', 'gallery-image', true)
-ON CONFLICT (id) DO NOTHING;
-
--- Bucket untuk profile images
-INSERT INTO storage.buckets (id, name, public)
-VALUES ('profile', 'profile', true)
-ON CONFLICT (id) DO NOTHING;
+-- Jika query di atas mengembalikan error atau kosong, 
+-- Anda harus membuat buckets manual dulu di Dashboard!
 
 -- =====================================================
 -- 2. DROP EXISTING STORAGE POLICIES (Jika ada)

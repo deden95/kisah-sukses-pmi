@@ -8,6 +8,13 @@
   <strong>Platform Digital Kisah Sukses PMI Palang Merah Indonesia Lampung</strong>
 </p>
 
+<p align="center">
+  <a href="#-quick-start">Quick Start</a> •
+  <a href="./docs">📚 Dokumentasi Lengkap</a> •
+  <a href="#-troubleshooting">🔧 Troubleshooting</a> •
+  <a href="#-support">📞 Support</a>
+</p>
+
 ## 📖 Tentang Proyek
 
 Website "Kisah Sukses" adalah platform digital untuk Palang Merah Indonesia (PMI) Lampung yang bertujuan untuk:
@@ -72,6 +79,34 @@ Aplikasi ini dibangun dengan teknologi modern: **Next.js 14**, **Supabase**, **T
 - 🚀 **SEO Optimized** - Meta tags dan Open Graph
 - 📊 **Admin Dashboard** - Panel admin untuk mengelola konten
 
+## 📚 Dokumentasi Lengkap
+
+> **🎯 AKSES CEPAT**: Semua dokumentasi tersedia di folder [`docs/`](./docs)
+
+### 📖 **Setup & Installation**
+- [📋 Dokumentasi Index](./docs/README.md) - Daftar lengkap semua dokumentasi
+- [⚡ Quick Setup Guide](./docs/QUICK_SETUP.md) - Setup cepat untuk development
+- [📊 Setup PMI Lampung](./docs/SETUP_PMI_LAMPUNG.md) - Panduan setup lengkap
+
+### 🔐 **Authentication**
+- [🔑 OAuth Setup](./docs/oauth/OAUTH_SETUP.md) - Google & GitHub OAuth setup
+- [🚨 OAuth Troubleshooting](./docs/oauth/OAUTH_TROUBLESHOOTING.md) - Solusi masalah login
+
+### 💾 **Storage & Upload**
+- [⚡ URGENT: Storage Fix](./docs/storage/URGENT_STORAGE_FIX.md) - Fix upload error 403
+- [📝 Step-by-step Storage Setup](./docs/storage/STORAGE_SETUP_STEP_BY_STEP.md) - Panduan detail
+- [📁 Storage Upload Fix](./docs/storage/STORAGE_UPLOAD_FIX.md) - Troubleshooting upload
+
+### 🗄️ **Database**
+- [📊 Database Setup Script](./docs/database/setup_database.sql) - Script SQL setup database
+
+### 🔧 **SQL Scripts**
+- [🛠️ Debug Storage Complete](./docs/storage/debug_storage_complete.sql) - Fix semua masalah storage
+- [🔄 Storage Fix Alternative](./docs/storage/storage_fix_alternative.sql) - Alternative storage fix
+- [✅ Check Storage Status](./docs/storage/check_storage_status.sql) - Cek status storage
+
+---
+
 # ⚙️ Panduan Setup
 
 ## 📋 Requirements
@@ -128,9 +163,9 @@ yarn install
 
 ### 4. 🔑 Setup Authentication (OAuth)
 
-> **📖 Dokumentasi Lengkap OAuth**: Lihat file [OAUTH_SETUP.md](./OAUTH_SETUP.md) untuk panduan detail setup Google OAuth dan GitHub OAuth.
+> **📖 Dokumentasi Lengkap OAuth**: Lihat [docs/oauth/OAUTH_SETUP.md](./docs/oauth/OAUTH_SETUP.md) untuk panduan detail setup Google OAuth dan GitHub OAuth.
 > 
-> **🚨 Troubleshooting OAuth**: Jika mengalami error, lihat [OAUTH_TROUBLESHOOTING.md](./OAUTH_TROUBLESHOOTING.md) untuk solusi cepat.
+> **🚨 Troubleshooting OAuth**: Jika mengalami error, lihat [docs/oauth/OAUTH_TROUBLESHOOTING.md](./docs/oauth/OAUTH_TROUBLESHOOTING.md) untuk solusi cepat.
 
 #### Quick Setup:
 
@@ -224,13 +259,13 @@ Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
 1. Periksa konfigurasi OAuth di Google/GitHub Console
 2. Pastikan redirect URL sudah benar
 3. Periksa apakah OAuth sudah di-enable di Supabase
-4. 🚨 **Lihat**: [OAUTH_TROUBLESHOOTING.md](./OAUTH_TROUBLESHOOTING.md) untuk solusi lengkap
+4. 🚨 **Lihat**: [docs/oauth/OAUTH_TROUBLESHOOTING.md](./docs/oauth/OAUTH_TROUBLESHOOTING.md) untuk solusi lengkap
 
 ### Upload gambar error (403 - RLS policy violation)
 **Solusi**: 
-1. Jalankan script `fix_storage_rls.sql` di Supabase SQL Editor
+1. Jalankan script `docs/storage/debug_storage_complete.sql` di Supabase SQL Editor
 2. Pastikan storage buckets sudah dibuat dan bersifat public
-3. 🚨 **Lihat**: [STORAGE_UPLOAD_FIX.md](./STORAGE_UPLOAD_FIX.md) untuk panduan lengkap
+3. 🚨 **Lihat**: [docs/storage/URGENT_STORAGE_FIX.md](./docs/storage/URGENT_STORAGE_FIX.md) untuk panduan lengkap
 
 ### Database connection error
 **Solusi**: Pastikan URL dan API Key Supabase sudah benar di file `.env`

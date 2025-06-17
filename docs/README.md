@@ -1,32 +1,102 @@
 # 📚 Dokumentasi PMI Lampung - Kisah Sukses
 
-> **Platform Digital untuk berbagi cerita inspiratif PMI Lampung**
+<div align="center">
 
-## 📋 Daftar Dokumentasi
+**🩸 Platform Digital untuk berbagi cerita inspiratif PMI Lampung**
 
-### 🚀 **Setup & Installation**
-- [📖 Setup PMI Lampung](./SETUP_PMI_LAMPUNG.md) - Panduan setup lengkap
-- [⚡ Quick Setup](./QUICK_SETUP.md) - Setup cepat untuk development
+[![Setup Guide](https://img.shields.io/badge/📖_Setup-Guide-blue?style=for-the-badge)](./SETUP_PMI_LAMPUNG.md)
+[![Quick Start](https://img.shields.io/badge/⚡_Quick-Start-green?style=for-the-badge)](./QUICK_SETUP.md)
+[![OAuth Fix](https://img.shields.io/badge/🔐_OAuth-Fix-orange?style=for-the-badge)](./oauth/OAUTH_TROUBLESHOOTING.md)
+[![Storage Fix](https://img.shields.io/badge/💾_Storage-Fix-red?style=for-the-badge)](./storage/URGENT_STORAGE_FIX.md)
 
-### 🔐 **Authentication (OAuth)**
-- [🔑 OAuth Setup Guide](./oauth/OAUTH_SETUP.md) - Setup Google & GitHub OAuth
-- [🚨 OAuth Troubleshooting](./oauth/OAUTH_TROUBLESHOOTING.md) - Solusi masalah OAuth
+</div>
+
+---
+
+## 🎯 Dokumentasi Berdasarkan Kebutuhan
+
+### 🚀 **Baru Pertama Kali Setup?**
+
+| 📖 Panduan | ⏱️ Waktu | 📝 Deskripsi |
+|------------|-----------|---------------|
+| [⚡ Quick Setup](./QUICK_SETUP.md) | **10 menit** | Setup cepat untuk development |
+| [📊 Setup PMI Lampung](./SETUP_PMI_LAMPUNG.md) | **30 menit** | Panduan lengkap dengan penjelasan detail |
+
+### 🚨 **Ada Error? Fix Sekarang!**
+
+| ❌ Error Yang Dialami | ⚡ Solusi Cepat | 📋 Panduan |
+|----------------------|-----------------|-------------|
+| `Unsupported provider: provider is not enabled` | OAuth belum di-enable | [🔐 OAuth Troubleshooting](./oauth/OAUTH_TROUBLESHOOTING.md) |
+| `403 - RLS policy violation` (upload gambar) | Storage belum dikonfigurasi | [🚨 URGENT Storage Fix](./storage/URGENT_STORAGE_FIX.md) |
+| `Your project's URL and Key are required` | Environment variables salah | [⚙️ Environment Setup](./SETUP_PMI_LAMPUNG.md#environment-variables) |
+| Database connection error | Supabase credentials salah | [🗄️ Database Setup](./SETUP_PMI_LAMPUNG.md#setup-supabase-database) |
+
+---
+
+## 📚 Dokumentasi Lengkap
+
+### 🔧 **Setup & Installation**
+
+#### 📖 **Panduan Utama**
+- [📊 Setup PMI Lampung](./SETUP_PMI_LAMPUNG.md) - **Panduan lengkap 30 menit**
+  - ✅ Requirements dan persiapan
+  - ✅ Setup Supabase Database step-by-step
+  - ✅ Konfigurasi OAuth Google & GitHub
+  - ✅ Environment variables
+  - ✅ Testing dan troubleshooting
+  - ✅ Post-setup checklist
+
+- [⚡ Quick Setup](./QUICK_SETUP.md) - **Setup cepat 10 menit**
+  - ✅ Langkah-langkah singkat
+  - ✅ Checklist setup
+  - ✅ Quick troubleshooting
+
+#### 🛠️ **Advanced Setup**
+- [🔄 Development Workflow](./SETUP_PMI_LAMPUNG.md#development-workflow) - Best practices development
+- [🚀 Production Deployment](./oauth/OAUTH_SETUP.md#production-deployment) - Deploy ke production
+
+### 🔐 **Authentication & OAuth**
+
+#### 🔑 **Setup OAuth**
+- [🔐 OAuth Setup Guide](./oauth/OAUTH_SETUP.md) - **Setup Google & GitHub OAuth lengkap**
+  - ✅ Google Cloud Console setup
+  - ✅ GitHub OAuth App setup
+  - ✅ Supabase configuration
+  - ✅ Testing dan debugging
+  - ✅ Production deployment
+  - ✅ Security configuration
+
+#### 🚨 **Troubleshooting OAuth**
+- [🚨 OAuth Troubleshooting](./oauth/OAUTH_TROUBLESHOOTING.md) - **Solusi masalah OAuth**
+  - ❌ "Unsupported provider" error → ✅ Solusi
+  - ❌ "redirect_uri_mismatch" → ✅ Solusi
+  - ❌ "invalid_client" → ✅ Solusi
+  - ❌ Login tidak persist → ✅ Solusi
 
 ### 💾 **Storage & Upload**
-- [📁 Storage Upload Fix](./storage/STORAGE_UPLOAD_FIX.md) - Fix masalah upload gambar
-- [⚡ Urgent Storage Fix](./storage/URGENT_STORAGE_FIX.md) - Solusi cepat storage
-- [📝 Storage Setup Step-by-Step](./storage/STORAGE_SETUP_STEP_BY_STEP.md) - Panduan detail
 
-### 🗄️ **Database**
-- [📊 Database Setup](./database/setup_database.sql) - Script setup database
+#### 🚨 **Fix Upload Error (Priority)**
+- [⚡ URGENT: Storage Fix](./storage/URGENT_STORAGE_FIX.md) - **Fix error 403 dalam 5 menit**
+  - 🔥 STEP 1: Cek status storage
+  - 🔥 STEP 2: Buat storage buckets
+  - 🔥 STEP 3: Setup RLS policies
+  - 🔥 STEP 4: Test upload
+  - ✅ Success checklist
 
-### 🔧 **SQL Scripts**
+#### 📝 **Setup Storage Detail**
+- [📋 Storage Setup Step-by-Step](./storage/STORAGE_SETUP_STEP_BY_STEP.md) - Panduan detail storage
+- [📁 Storage Upload Fix](./storage/STORAGE_UPLOAD_FIX.md) - Troubleshooting upload issues
 
-#### Storage Scripts:
-- [`debug_storage_complete.sql`](./storage/debug_storage_complete.sql) - Debug & fix storage issues
-- [`storage_fix_alternative.sql`](./storage/storage_fix_alternative.sql) - Alternative storage fix
-- [`fix_storage_rls.sql`](./storage/fix_storage_rls.sql) - Fix RLS policies
-- [`check_storage_status.sql`](./storage/check_storage_status.sql) - Check storage status
+### 🗄️ **Database & SQL**
+
+#### 📊 **Database Setup**
+- [🗄️ Database Setup Script](./database/setup_database.sql) - Script SQL setup database lengkap
+
+#### 🔧 **SQL Scripts Utility**
+- [🛠️ Debug Storage Complete](./storage/debug_storage_complete.sql) - Fix semua masalah storage
+- [🔄 Storage Fix Alternative](./storage/storage_fix_alternative.sql) - Alternative storage fix
+- [🔒 Fix Storage RLS](./storage/fix_storage_rls.sql) - Fix RLS policies
+- [✅ Check Storage Status](./storage/check_storage_status.sql) - Cek status storage
 
 ---
 
@@ -150,7 +220,35 @@ Untuk berkontribusi pada proyek PMI Lampung:
 
 ---
 
-**📝 Last Updated**: June 2025  
-**🔄 Version**: 2.0  
-**👥 Maintainer**: PMI Lampung Tech Team
+---
+
+## 📋 **Documentation Navigation**
+
+### 🎯 **Start Here (First Time)**
+1. [⚡ Quick Setup](./QUICK_SETUP.md) ← **Mulai di sini jika buru-buru**
+2. [📊 Setup PMI Lampung](./SETUP_PMI_LAMPUNG.md) ← **Panduan lengkap**
+
+### 🚨 **Fix Common Errors**
+| Issue | Fix |
+|-------|-----|
+| OAuth login error | [🔐 OAuth Troubleshooting](./oauth/OAUTH_TROUBLESHOOTING.md) |
+| Upload gambar error 403 | [🚨 Storage Fix](./storage/URGENT_STORAGE_FIX.md) |
+| Database connection error | Check `.env` file |
+
+### 📚 **Complete Guides**
+- **Authentication**: [OAuth Setup Guide](./oauth/OAUTH_SETUP.md)
+- **Storage**: [Storage Setup Guide](./storage/STORAGE_SETUP_STEP_BY_STEP.md)
+- **Database**: [Database Setup](./database/setup_database.sql)
+
+---
+
+**📝 Last Updated**: June 2025 | **🔄 Version**: 2.0 | **👥 Maintainer**: PMI Lampung Tech Team
+
+<div align="center">
+
+**🩸 Made with ❤️ for PMI Lampung**
+
+[🏠 Back to Main README](../README.md) | [📧 Contact Support](mailto:tech@pmilampung.org) | [🌐 PMI Lampung](https://www.pmilampung.org)
+
+</div>
 

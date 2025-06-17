@@ -179,7 +179,7 @@ CREATE TRIGGER handle_updated_at
 INSERT INTO public.categories (title, slug) VALUES
 ('Donor Darah', 'donor-darah'),
 ('Kemanusiaan', 'kemanusiaan'),
-('Bencana Alam', 'bencana-alam'),
+('Kisah Sukses', 'kisah-sukses'),
 ('Kesehatan', 'kesehatan'),
 ('Pendidikan', 'pendidikan');
 

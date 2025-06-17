@@ -1,14 +1,14 @@
 import { MainPostItem } from "@/components/main";
 import { SharedEmpty, SharedPagination } from "@/components/shared";
-import { mainCategoryConfig } from "@/config/main";
 import { seoData } from "@/config/root/seo";
 import { getOgImageUrl, getUrl } from "@/lib/utils";
+import { getCategoryById } from "@/lib/supabase/categories";
 import { PostWithCategoryWithProfile } from "@/types/collection";
 import type { Database } from "@/types/supabase";
 import { createClient } from "@/utils/supabase/server";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
-import notFound from "next/navigation";
+import { notFound } from "next/navigation";
 import React from "react";
 import { v4 } from "uuid";
 
@@ -23,9 +23,14 @@ export async function generateMetadata({
   params,
 }: CategoryPageProps): Promise<Metadata> {
   const slug = params?.slug?.join("/");
-  const category = mainCategoryConfig.find(
-    (category) => category.slug === slug,
-  );
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
+  
+  const { data: category } = await supabase
+    .from("categories")
+    .select("*")
+    .eq("slug", slug)
+    .single();
 
   if (!category) {
     return {};
@@ -81,9 +86,11 @@ export default async function CategoryPage({
   const supabase = createClient(cookieStore);
   // Get category by slug
   const slug = params?.slug?.join("/");
-  const category = mainCategoryConfig.find(
-    (category) => category.slug === slug,
-  );
+  const { data: category } = await supabase
+    .from("categories")
+    .select("*")
+    .eq("slug", slug)
+    .single();
   // Fetch total pages
   const { count } = await supabase
     .from("posts")

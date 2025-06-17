@@ -1,17 +1,45 @@
 # ⚡ Quick Setup - PMI Lampung Kisah Sukses
 
-> **Panduan setup cepat dalam 10 menit**
+<div align="center">
 
-## 📋 Checklist Setup
+**🩸 Panduan setup cepat dalam 10 menit**
 
-### ✅ Langkah 1: Clone & Install
+![Setup Progress](https://img.shields.io/badge/Setup_Time-10_minutes-green?style=for-the-badge)
+![Difficulty](https://img.shields.io/badge/Difficulty-Easy-brightgreen?style=for-the-badge)
+![Language](https://img.shields.io/badge/Language-Bahasa_Indonesia-blue?style=for-the-badge)
+
+</div>
+
+---
+
+## 🎯 **Apa yang Akan Anda Dapatkan?**
+
+Setelah mengikuti panduan ini (10 menit), Anda akan memiliki:
+- ✅ Website berjalan di `http://localhost:3000`
+- ✅ Login Google/GitHub working
+- ✅ Database dan storage setup
+- ✅ Ready untuk development!
+
+---
+
+## 📋 Checklist Setup - Ikuti Berurutan!
+
+### 📦 **STEP 1: Clone & Install** (2 menit)
+
 ```bash
+# Clone repository
 git clone <repository-url>
 cd kisah-sukses
+
+# Install dependencies
 npm install
 ```
 
-### ✅ Langkah 2: Buat Project Supabase
+**✅ Success indicator**: Folder `node_modules` terbuat, no error di terminal
+
+---
+
+### 🗄️ **STEP 2: Buat Project Supabase** (3 menit)
 1. Daftar di [supabase.com](https://supabase.com/dashboard)
 2. Klik "New Project"
 3. Name: `PMI Lampung Kisah Sukses`

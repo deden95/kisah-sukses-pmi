@@ -1,24 +1,57 @@
 "use client";
 
-import { mainCategoryConfig } from "@/config/main";
+import { getCategories } from "@/lib/supabase/categories-client";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { v4 } from "uuid";
 
 const MainDesktopNavigationMenu = () => {
   const currentPath = usePathname();
+  const [categories, setCategories] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const data = await getCategories();
+        // Add home category at the beginning
+        const categoriesWithHome = [
+          { id: "home", title: "Home", slug: "/" },
+          ...data
+        ];
+        setCategories(categoriesWithHome);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="hidden gap-x-6 md:flex">
+        <div className="h-8 w-16 animate-pulse rounded-full bg-gray-200"></div>
+        <div className="h-8 w-20 animate-pulse rounded-full bg-gray-200"></div>
+        <div className="h-8 w-24 animate-pulse rounded-full bg-gray-200"></div>
+      </div>
+    );
+  }
   return (
     <>
       <div className="hidden gap-x-6 md:flex">
-        {mainCategoryConfig.map((category) => (
+        {categories.map((category) => (
           <Link
             href={
               category.slug === "/"
                 ? category.slug
                 : `/category/${category.slug}`
             }
-            key={v4()}
+            key={category.id}
             className={cn(
               "relative inline-flex items-center rounded-full px-4 py-1.5 text-base font-semibold tracking-tight text-gray-500 antialiased ring-1 ring-transparent transition duration-200 [word-spacing:-5px] active:scale-[96%] active:ring-black/20",
               {

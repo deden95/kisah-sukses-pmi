@@ -23,6 +23,8 @@ const protectedEditorConfig = {
   galleryImageTitle: "Gallery Images",
   galleryImageDescription: "You can upload up to ",
   submit: "Update",
+  saveDraft: "Save Draft",
+  publish: "Publish", 
   cancel: "Cancel",
   cofirm: "Confirm",
   placeHolderTitle: "Please provide a title for your blog post",
@@ -37,8 +39,9 @@ const protectedEditorConfig = {
     "Please provide a short description of your blog post",
   placeholderCategory: "Please choose a category",
   placeholderContent: "Type here your blog post content",
-  defaultCategoryId: "4db30a13-2797-4c7d-a0ce-e0c127287a39", // Science
+  defaultCategoryId: "", // Will be set to first available category
   successMessage: "Your post has been updated",
+  successMessagePublish: "Your post has been published!",
   errorMessage: "Error updating your post",
   chooseFile: "Upload Files",
   thumbnail: "Thumbnail",

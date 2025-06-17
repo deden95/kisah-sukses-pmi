@@ -1,6 +1,7 @@
 import Editor from "@/components/protected/editor/editor";
 import { Separator } from "@/components/ui/separator";
 import { protectedEditorConfig } from "@/config/protected";
+import { getCategories } from "@/lib/supabase/categories";
 import { Draft } from "@/types/collection";
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
@@ -32,19 +33,31 @@ async function getUserId() {
 async function getPost(postId: string, userId: string) {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
-  const { data, error } = await supabase
+  
+  // Try to get from drafts first
+  const { data: draftData, error: draftError } = await supabase
     .from("drafts")
     .select("*")
     .match({ id: postId, author_id: userId })
     .single<Draft>();
 
-  if (error) {
-    console.log("Error has occured while getting post data");
-    console.log("Error message : ", error.message);
-    return null;
+  if (draftData) {
+    return { ...draftData, published: false };
   }
 
-  return data ? data : null;
+  // If not found in drafts, try posts table
+  const { data: postData, error: postError } = await supabase
+    .from("posts")
+    .select("*")
+    .match({ id: postId, author_id: userId })
+    .single<Draft>();
+
+  if (postData) {
+    return { ...postData, published: true };
+  }
+
+  console.log("Post not found in either table:", { draftError, postError });
+  return null;
 }
 
 // Get Cover image filename and public url
@@ -142,6 +155,7 @@ export default async function PostEditorPage({ params }: PostEditorPageProps) {
     process.env.NEXT_PUBLIC_SUPABASE_STORAGE_BUCKET_GALLERY_IMAGE!;
   const userId = await getUserId();
   const post = await getPost(params.postId, userId || "");
+  const categories = await getCategories();
 
   // Cover image setup
   const coverImageFileName = await getCoverImageFileName(
@@ -185,6 +199,7 @@ export default async function PostEditorPage({ params }: PostEditorPageProps) {
       <Editor
         post={post}
         userId={userId || ""}
+        categories={categories}
         coverImageFileName={coverImageFileName || ""}
         coverImagePublicUrl={coverImagePublicUrl || ""}
         galleryImageFileNames={galleryImageFileNames || []}

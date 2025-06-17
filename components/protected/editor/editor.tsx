@@ -30,8 +30,8 @@ import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
-import { mainCategoryConfig } from "@/config/main";
 import { protectedEditorConfig, protectedPostConfig } from "@/config/protected";
+import { CategorySelect } from "./category-select";
 import { postEditFormSchema } from "@/lib/validation/post";
 import { Draft } from "@/types/collection";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
@@ -316,33 +316,7 @@ const Editor: FC<EditorProps> = ({
                 control={form.control}
                 name="categoryId"
                 render={({ field }) => (
-                  <FormItem className="space-y-3">
-                    <FormControl>
-                      <RadioGroup
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                        className="flex flex-col space-y-1"
-                      >
-                        {mainCategoryConfig.map(
-                          (category) =>
-                            category.slug !== "/" && (
-                              <FormItem
-                                key={v4()}
-                                className="flex items-center space-x-3 space-y-0"
-                              >
-                                <FormControl>
-                                  <RadioGroupItem value={category.id} />
-                                </FormControl>
-                                <FormLabel className="font-normal">
-                                  {category.title}
-                                </FormLabel>
-                              </FormItem>
-                            ),
-                        )}
-                      </RadioGroup>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+                  <CategorySelect field={field} />
                 )}
               />
             </CardContent>

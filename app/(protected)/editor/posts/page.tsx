@@ -31,13 +31,30 @@ const PostsPage: FC<PostsPageProps> = async ({ searchParams }) => {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // Fetch posts
-  const { data, error } = await supabase
+  // Fetch drafts
+  const { data: draftsData, error: draftsError } = await supabase
     .from("drafts")
     .select(`*, categories(*)`)
     .order("created_at", { ascending: false })
     .match({ author_id: user?.id })
     .returns<Draft[]>();
+
+  // Fetch published posts
+  const { data: postsData, error: postsError } = await supabase
+    .from("posts")
+    .select(`*, categories(*)`)
+    .order("created_at", { ascending: false })
+    .match({ author_id: user?.id })
+    .returns<Draft[]>();
+
+  // Combine data and add status
+  const allData = [
+    ...(draftsData || []).map(item => ({ ...item, published: false })),
+    ...(postsData || []).map(item => ({ ...item, published: true }))
+  ].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+
+  const data = allData;
+  const error = draftsError || postsError;
 
   if (!data || error || !data.length) {
     notFound;

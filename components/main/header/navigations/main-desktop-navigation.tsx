@@ -27,11 +27,11 @@ const MainDesktopNavigation = () => {
         </div>
 
         {/* Navigation */}
-        <div className="flex items-center">
+        {/* <div className="flex items-center">
           <div className="flex flex-1 gap-x-6">
             <MainDesktopNavigationMenu />
           </div>
-        </div>
+        </div> */}
 
         {/* Login Menu */}
         <div className="flex flex-1 justify-end">

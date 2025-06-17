@@ -8,22 +8,36 @@
   <strong>Platform Digital Kisah Sukses PMI Palang Merah Indonesia Lampung</strong>
 </p>
 
+<div align="center">
+
+[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![Supabase](https://img.shields.io/badge/Supabase-Database-green?style=flat-square&logo=supabase)](https://supabase.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+
+</div>
+
 <p align="center">
-  <a href="#-quick-start">Quick Start</a> •
-  <a href="./docs">📚 Dokumentasi Lengkap</a> •
+  <a href="#-quick-start">🚀 Quick Start</a> •
+  <a href="./docs">📚 Dokumentasi</a> •
   <a href="#-troubleshooting">🔧 Troubleshooting</a> •
   <a href="#-support">📞 Support</a>
 </p>
 
+---
+
 ## 📖 Tentang Proyek
 
-Website "Kisah Sukses" adalah platform digital untuk Palang Merah Indonesia (PMI) Lampung yang bertujuan untuk:
-- 📝 Berbagi cerita inspiratif tentang kegiatan kemanusiaan PMI
-- 🩸 Meningkatkan kesadaran tentang donor darah dan kegiatan sosial
-- 🤝 Menghubungkan masyarakat dengan misi kemanusiaan PMI
-- 📚 Dokumentasi digital kegiatan dan pencapaian PMI Lampung
+**Platform Kisah Sukses PMI Lampung** adalah website untuk berbagi cerita inspiratif kegiatan kemanusiaan Palang Merah Indonesia Lampung.
 
-Aplikasi ini dibangun dengan teknologi modern: **Next.js 14**, **Supabase**, **TypeScript**, dan **Tailwind CSS**.
+### 🎯 Tujuan
+- 📝 **Berbagi cerita inspiratif** tentang kegiatan kemanusiaan PMI
+- 🩸 **Meningkatkan kesadaran** tentang donor darah dan kegiatan sosial
+- 🤝 **Menghubungkan masyarakat** dengan misi kemanusiaan PMI
+- 📚 **Dokumentasi digital** kegiatan dan pencapaian PMI Lampung
+
+### 🛠️ Teknologi
+Dibangun dengan teknologi modern: **Next.js 14**, **Supabase**, **TypeScript**, dan **Tailwind CSS**.
 
 
 ## 💾 Database Schema
@@ -248,27 +262,24 @@ Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
 
 ## 🔧 Troubleshooting
 
-### Error: "Your project's URL and Key are required"
-**Solusi**: Pastikan file `.env` sudah dikonfigurasi dengan benar dan restart development server.
+<div align="center">
 
-### Error: "Unsupported Server Component type: undefined"
-**Solusi**: Biasanya ada komponen yang tidak di-export dengan benar. Periksa file komponen yang bermasalah.
+**🚨 Ada masalah? Solusi cepat ada di sini!**
 
-### Login OAuth tidak berfungsi
-**Solusi**: 
-1. Periksa konfigurasi OAuth di Google/GitHub Console
-2. Pastikan redirect URL sudah benar
-3. Periksa apakah OAuth sudah di-enable di Supabase
-4. 🚨 **Lihat**: [docs/oauth/OAUTH_TROUBLESHOOTING.md](./docs/oauth/OAUTH_TROUBLESHOOTING.md) untuk solusi lengkap
+[![Troubleshooting Guide](https://img.shields.io/badge/🔧_Complete-Troubleshooting_Guide-red?style=for-the-badge)](./docs/TROUBLESHOOTING.md)
 
-### Upload gambar error (403 - RLS policy violation)
-**Solusi**: 
-1. Jalankan script `docs/storage/debug_storage_complete.sql` di Supabase SQL Editor
-2. Pastikan storage buckets sudah dibuat dan bersifat public
-3. 🚨 **Lihat**: [docs/storage/URGENT_STORAGE_FIX.md](./docs/storage/URGENT_STORAGE_FIX.md) untuk panduan lengkap
+</div>
 
-### Database connection error
-**Solusi**: Pastikan URL dan API Key Supabase sudah benar di file `.env`
+### ⚡ **Quick Fixes untuk Error Umum**
+
+| ❌ **Error** | ✅ **Quick Fix** | 📖 **Guide** |
+|---|---|---|
+| `Unsupported provider: provider is not enabled` | Enable OAuth di Supabase | [OAuth Fix](./docs/oauth/OAUTH_TROUBLESHOOTING.md) |
+| `403 - RLS policy violation` | Setup storage policies | [Storage Fix](./docs/storage/URGENT_STORAGE_FIX.md) |
+| `Your project's URL and Key are required` | Check `.env` dan restart | [Troubleshooting](./docs/TROUBLESHOOTING.md#environment-variables-issues) |
+| Database connection error | Verify Supabase credentials | [Database Setup](./docs/SETUP_PMI_LAMPUNG.md#setup-supabase-database) |
+
+**📋 Comprehensive Guide**: [docs/TROUBLESHOOTING.md](./docs/TROUBLESHOOTING.md) - Semua solusi masalah ada di sini!
 
 ## 📱 Deployment
 

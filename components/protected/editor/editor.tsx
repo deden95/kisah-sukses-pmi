@@ -1,7 +1,7 @@
 "use client";
 
 import { UpdatePost } from "@/actions/post/update-post";
-import WysiwygEditor from "@/components/protected/editor/wysiwyg/wysiwyg-editor";
+import EnhancedWysiwygEditor from "@/components/protected/editor/wysiwyg/enhanced-editor";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -32,6 +32,8 @@ import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import { protectedEditorConfig, protectedPostConfig } from "@/config/protected";
 import { CategorySelect } from "./category-select";
+import { PublishPost } from "@/actions/post/publish-post";
+import { UpdatePostImage } from "@/actions/post/update-post-image";
 import { postEditFormSchema } from "@/lib/validation/post";
 import { Draft } from "@/types/collection";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
@@ -86,6 +88,7 @@ const Editor: FC<EditorProps> = ({
   const allowedNumberOfImages = 9 - galleryImagePublicUrls.length;
   // States
   const [isSaving, setIsSaving] = useState(false);
+  const [isPublishing, setIsPublishing] = useState(false);
   const [showLoadingAlert, setShowLoadingAlert] = useState<boolean>(false);
   const [showCoverModal, setShowCoverModal] = useState<boolean>(false);
   const [showGalleryModal, setShowGalleryModal] = useState<boolean>(false);
@@ -144,6 +147,10 @@ const Editor: FC<EditorProps> = ({
 
   uppyCover.on("complete", async (result) => {
     if (result.successful.length > 0) {
+      // Update the image field in database with filename
+      const uploadedFile = result.successful[0];
+      await UpdatePostImage(post.id, uploadedFile.name);
+      
       toast.success(protectedEditorConfig.successMessageImageUpload);
       router.refresh();
     } else {
@@ -234,6 +241,38 @@ const Editor: FC<EditorProps> = ({
     }
 
     setIsSaving(false);
+    setShowLoadingAlert(false);
+  }
+
+  async function handlePublish() {
+    if (!content || !form.getValues("title") || !form.getValues("categoryId")) {
+      toast.error("Post harus memiliki title, content, dan category sebelum dipublish");
+      return;
+    }
+
+    setIsPublishing(true);
+    setShowLoadingAlert(true);
+
+    const data = form.getValues();
+    const response = await PublishPost({
+      id: post.id,
+      title: data.title,
+      slug: data.slug,
+      image: data.image,
+      description: data.description,
+      content: content,
+      categoryId: data.categoryId,
+      published: true,
+    });
+
+    if (response.success) {
+      toast.success(protectedEditorConfig.successMessagePublish);
+      router.push(`/editor/posts?search=refresh`);
+    } else {
+      toast.error(response.error || "Gagal mempublish post");
+    }
+
+    setIsPublishing(false);
     setShowLoadingAlert(false);
   }
 
@@ -480,7 +519,9 @@ const Editor: FC<EditorProps> = ({
             </CardContent>
           </Card>
 
-          <WysiwygEditor
+          <EnhancedWysiwygEditor
+            title="Konten Artikel"
+            description="Tulis konten artikel Anda menggunakan editor rich text di bawah ini. Gunakan toolbar untuk memformat teks, menambah gambar, link, dan elemen lainnya."
             defaultValue={content ? JSON.parse(content) : defaultEditorContent}
             onDebouncedUpdate={(editor) => {
               setContent(JSON.stringify(editor?.getJSON()));
@@ -491,15 +532,23 @@ const Editor: FC<EditorProps> = ({
             <Button
               type="submit"
               className="flex !bg-gray-900 px-10 !text-white hover:!bg-gray-800"
-              disabled={isSaving}
+              disabled={isSaving || isPublishing}
             >
               {protectedEditorConfig.submit}
             </Button>
+            {/* <Button
+              type="button"
+              onClick={handlePublish}
+              className="flex !bg-green-600 px-10 !text-white hover:!bg-green-700"
+              disabled={isSaving || isPublishing}
+            >
+              {isPublishing ? "Publishing..." : protectedEditorConfig.publish}
+            </Button> */}
             <Button
               type="button"
               onClick={() => router.back()}
               className="flex !bg-gray-100 px-10 !text-gray-900 hover:!bg-gray-200"
-              disabled={isSaving}
+              disabled={isSaving || isPublishing}
             >
               {protectedEditorConfig.cancel}
             </Button>

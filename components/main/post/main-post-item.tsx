@@ -9,17 +9,18 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import readingTime from "reading-time";
+import { ImageFallback } from "@/components/shared/shared-image-fallback";
 
 export const dynamic = "force-dynamic";
 
-async function getPublicImageUrl(postId: string, fileName: string) {
+async function getPublicImageUrl(userId: string, postId: string, fileName: string) {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
   const bucketName =
-    process.env.NEXT_PUBLIC_SUPABASE_STORAGE_BUCKET_POSTS || "posts";
+    process.env.NEXT_PUBLIC_SUPABASE_STORAGE_BUCKET_COVER_IMAGE || "cover-image";
   const { data } = supabase.storage
     .from(bucketName)
-    .getPublicUrl(`${postId}/${fileName}`);
+    .getPublicUrl(`${userId}/${postId}/${fileName}`);
 
   if (data && data.publicUrl) return data.publicUrl;
 
@@ -58,8 +59,8 @@ const MainPostItem: React.FC<MainPostItemProps> = async ({ post }) => {
           <Link href={`/posts/${post.slug}`}>
             <article className="relative isolate flex max-w-3xl flex-col gap-2 rounded-lg bg-white px-5 py-5 shadow-md shadow-gray-300 ring-1 ring-black/5 sm:gap-8 sm:px-10 sm:py-6 lg:flex-row">
               <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
-                <Image
-                  src={await getPublicImageUrl(post.id, post.image || "")}
+                <ImageFallback
+                  src={await getPublicImageUrl(post.profiles?.id || post.author_id || "", post.id, post.image || "")}
                   alt={post.title ?? "Cover"}
                   height={256}
                   width={256}

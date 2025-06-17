@@ -3,6 +3,7 @@ import {
   DetailPostComment,
   DetailPostFloatingBar,
   DetailPostHeading,
+  DetailPostContent,
 } from "@/components/detail/post";
 import { DetailPostScrollUpButton } from "@/components/detail/post/buttons";
 import { seoData } from "@/config/root/seo";
@@ -174,6 +175,7 @@ export default async function PostPage({ params }: PostPageProps) {
                   id={post.id}
                   title={post.title as string}
                   image={post.image as string}
+                  authorId={post.author_id as string}
                   authorName={post.profiles.full_name as string}
                   authorImage={post.profiles.avatar_url as string}
                   date={format(parseISO(post.updated_at!), "MMMM dd, yyyy")}
@@ -196,10 +198,7 @@ export default async function PostPage({ params }: PostPageProps) {
               </div>
               {/* Content */}
               <div className="relative mx-auto max-w-3xl border-slate-500/50 py-5">
-                <div
-                  className="lg:prose-md prose"
-                  dangerouslySetInnerHTML={{ __html: post.content || "" }}
-                />
+                <DetailPostContent content={post.content} />
               </div>
               <div className="mx-auto mt-10">
                 {/* Bottom Floatingbar */}

@@ -5,15 +5,16 @@ import { cookies } from "next/headers";
 import Image from "next/image";
 import { FC } from "react";
 import { ReadTimeResults } from "reading-time";
+import { ImageFallback } from "@/components/shared/shared-image-fallback";
 
-async function getPublicImageUrl(postId: string, fileName: string) {
+async function getPublicImageUrl(userId: string, postId: string, fileName: string) {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
   const bucketName =
-    process.env.NEXT_PUBLIC_SUPABASE_STORAGE_BUCKET_POSTS || "posts";
+    process.env.NEXT_PUBLIC_SUPABASE_STORAGE_BUCKET_COVER_IMAGE || "cover-image";
   const { data } = supabase.storage
     .from(bucketName)
-    .getPublicUrl(`${postId}/${fileName}`);
+    .getPublicUrl(`${userId}/${postId}/${fileName}`);
 
   if (data && data.publicUrl) return data.publicUrl;
 
@@ -24,6 +25,7 @@ interface DetailPostHeadingProps {
   id: string;
   title: string;
   image: string;
+  authorId: string;
   authorImage: string;
   authorName: string;
   date: string;
@@ -35,6 +37,7 @@ const DetailPostHeading: FC<DetailPostHeadingProps> = async ({
   id,
   title,
   image,
+  authorId,
   authorName,
   authorImage,
   date,
@@ -44,8 +47,8 @@ const DetailPostHeading: FC<DetailPostHeadingProps> = async ({
   return (
     <section className="flex flex-col items-start justify-between">
       <div className="relative w-full">
-        <Image
-          src={await getPublicImageUrl(id, image)}
+        <ImageFallback
+          src={await getPublicImageUrl(authorId, id, image)}
           alt={title}
           width={512}
           height={288}

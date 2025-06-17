@@ -4,22 +4,21 @@ export const defaultEditorContent = {
     {
       type: "heading",
       attrs: { level: 2 },
-      content: [{ type: "text", text: "Introducing Next.js - Blog app" }],
+      content: [{ type: "text", text: "Mulai Menulis Kisah Sukses Anda" }],
     },
     {
       type: "paragraph",
       content: [
         {
           type: "text",
-          text: " This is an full-stack blogging app. Built with Next.js 13 and Supabase",
+          text: "Bagikan pengalaman inspiratif Anda dalam membantu sesama melalui kegiatan PMI Lampung. Setiap kisah yang dibagikan dapat menginspirasi orang lain untuk berbuat kebaikan.",
         },
       ],
     },
-
     {
       type: "heading",
       attrs: { level: 3 },
-      content: [{ type: "text", text: "Features" }],
+      content: [{ type: "text", text: "Tips Menulis Kisah Sukses" }],
     },
     {
       type: "orderedList",
@@ -30,7 +29,7 @@ export const defaultEditorContent = {
           content: [
             {
               type: "paragraph",
-              content: [{ type: "text", text: "Bubble menu and slash menu" }],
+              content: [{ type: "text", text: "Ceritakan latar belakang dan motivasi awal Anda" }],
             },
           ],
         },
@@ -42,7 +41,35 @@ export const defaultEditorContent = {
               content: [
                 {
                   type: "text",
-                  text: "Image and Link insertion via url ",
+                  text: "Jelaskan tantangan yang dihadapi dan bagaimana mengatasinya",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  type: "text",
+                  text: "Bagikan dampak positif yang berhasil dicapai",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  type: "text",
+                  text: "Sertakan pesan inspiratif untuk pembaca",
                 },
               ],
             },
@@ -51,14 +78,13 @@ export const defaultEditorContent = {
       ],
     },
     {
-      type: "image",
-      attrs: {
-        src: "https://iskzuogcmkzumadqjnbv.supabase.co/storage/v1/object/public/posts/banner/banners.png",
-        alt: "banners.png",
-        title: "banners.png",
-        width: null,
-        height: null,
-      },
+      type: "paragraph",
+      content: [
+        {
+          type: "text",
+          text: "Gunakan editor ini untuk memformat teks, menambahkan gambar, dan membuat konten yang menarik. Ketik '/' untuk melihat opsi formatting yang tersedia.",
+        },
+      ],
     },
   ],
 };

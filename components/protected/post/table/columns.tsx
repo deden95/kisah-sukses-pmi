@@ -5,7 +5,9 @@ import { ColumnDef } from "@tanstack/react-table";
 import { format } from "date-fns";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
-import { categories, statuses } from "./data/data";
+import { CategoryTableCell } from "./category-table-cell";
+import { statuses } from "./data/data";
+import { Pencil2Icon as DraftIcon } from "@radix-ui/react-icons";
 
 export const columns: ColumnDef<Draft>[] = [
   {
@@ -30,24 +32,8 @@ export const columns: ColumnDef<Draft>[] = [
       <DataTableColumnHeader column={column} title="Category" />
     ),
     cell: ({ row }) => {
-      const label = categories.find(
-        (category) => category.value === row.original.category_id,
-      );
-
-      if (!label) {
-        return null;
-      }
-
-      return (
-        <div className="flex space-x-2">
-          <div className="max-w-[500px] justify-start truncate font-medium">
-            <span className="inline-flex items-center rounded-full border border-gray-400 px-3 py-1 text-sm text-gray-500">
-              <label.icon className="mr-1 h-4 w-4" />
-              {label.label}
-            </span>
-          </div>
-        </div>
-      );
+      const categoryId = row.getValue("category_id") as string;
+      return <CategoryTableCell categoryId={categoryId} />;
     },
     enableHiding: false,
     filterFn: (row, id, value) => {
@@ -55,30 +41,27 @@ export const columns: ColumnDef<Draft>[] = [
     },
   },
   {
-    accessorKey: "status",
+    accessorKey: "published",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Status" />
     ),
     cell: ({ row }) => {
-      const status = statuses.find(
-        (status) => status.value === row.getValue("status"),
-      );
-
-      if (!status) {
-        return null;
-      }
-
+      // Since we're showing drafts, status is always "draft"
+      // But we can check if published field exists for future use
+      const isPublished = row.original.published === true;
+      const status = isPublished ? "published" : "draft";
+      
       return (
         <div className="flex w-[100px] items-center">
-          {status.icon && (
-            <status.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-          )}
-          <span>{status.label}</span>
+          <DraftIcon className="mr-2 h-4 w-4 text-muted-foreground" />
+          <span className="capitalize">{status}</span>
         </div>
       );
     },
     filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id));
+      const isPublished = row.original.published === true;
+      const status = isPublished ? "published" : "draft";
+      return value.includes(status);
     },
   },
   {
